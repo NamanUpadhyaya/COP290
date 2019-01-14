@@ -7,15 +7,12 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    // cout << "Enter Input Matrix Size: \n";
-    // float input_size;
-    // cin >> input_size;
-    // cout << argv[1] << argv[2];
     ifstream inputmatrixfile ("input.txt");
-    string line1;
-    while (getline(inputmatrixfile, line1))
+    string line;
+    while (getline(inputmatrixfile, line))
     {
-        cout << line1 << "\n";
+        cout << line << "\n";
     }
-
+    int input_size= stoi(argv[1]);
+    float *input= new float[input_size][input_size];
 }
