@@ -5,14 +5,31 @@
 #include <string>
 using namespace std;
 
+// take input size and kernel size from command line input
 int main(int argc, char* argv[])
 {
+    int input_size= stoi(argv[1]);
+    int kernel_size= stoi(argv[2]);
+    float input[input_size][input_size];
+    float kernel[kernel_size][kernel_size];
+
     ifstream inputmatrixfile ("input.txt");
     string line;
-    while (getline(inputmatrixfile, line))
+    int a=0;
+    while (getline(inputmatrixfile, line) && a<(input_size*input_size))
     {
-        cout << line << "\n";
+        input[a%input_size][a/input_size]= stof(line);
+        a++;
     }
-    int input_size= stoi(argv[1]);
-    float *input= new float[input_size][input_size];
+    inputmatrixfile.close();
+
+    ifstream kernelmatrixfile ("kernel.txt");
+    a=0;
+    while (getline(kernelmatrixfile, line) && a<(kernel_size*kernel_size))
+    {
+        kernel[a%kernel_size][a/kernel_size]= stof(line);
+        a++;
+    }
+   kernelmatrixfile.close();
+
 }
